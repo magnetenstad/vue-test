@@ -1,16 +1,16 @@
-import { mount } from '@vue/test-utils'
-import Counter from '../components/Counter.vue'
+import { mount } from '@vue/test-utils';
+import Counter from '../components/Counter.vue';
 
 test('counter counts', async () => {
-  const wrapper = mount(Counter, {})
+  const wrapper = mount(Counter, {});
 
-  expect(wrapper.text()).toContain('Count: 0')
+  expect(wrapper.text()).toContain('Count: 0');
 
-  await wrapper.get('button#increment').trigger('click')
+  await wrapper.get('button#increment').trigger('click');
 
-  expect(wrapper.text()).toContain('Count: 1')
+  expect(wrapper.text()).toContain('Count: 1');
 
-  await wrapper.get('button#decrement').trigger('click')
-  
-  expect(wrapper.text()).toContain('Count: 0')
-})
+  await wrapper.get('button#decrement').trigger('click');
+
+  expect(wrapper.text()).toContain('Count: 0');
+});
