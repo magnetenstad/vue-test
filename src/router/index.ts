@@ -1,4 +1,11 @@
-import { createRouter, createWebHistory } from 'vue-router';
+import {
+  createRouter as createVueRouter,
+  createWebHistory,
+  Router,
+} from 'vue-router';
+
+export { createRouter };
+export type { Router };
 
 const routes = [
   {
@@ -9,13 +16,12 @@ const routes = [
   {
     path: '/counter',
     name: 'Counter',
-    component: () => import('../components/Counter.vue'),
+    component: () => import('../pages/Counter.vue'),
   },
 ];
 
-const router = createRouter({
-  history: createWebHistory(),
-  routes: routes,
-});
-
-export default router;
+const createRouter = (): Router =>
+  createVueRouter({
+    history: createWebHistory(),
+    routes: routes,
+  });

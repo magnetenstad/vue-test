@@ -1,6 +1,11 @@
-import { mount } from '@vue/test-utils';
+import { mount, flushPromises } from '@vue/test-utils';
 import App from './App.vue';
-import router from './router';
+import { createRouter, Router } from './router';
+
+let router: Router;
+beforeEach(async () => {
+  router = createRouter();
+});
 
 test('routing', async () => {
   await router.push('/');
@@ -18,4 +23,22 @@ test('routing', async () => {
   await router.isReady();
 
   expect(wrapper.html()).toContain('Count: 0');
+});
+
+test('counter links to home', async () => {
+  const wrapper = mount(App, {
+    global: {
+      plugins: [router],
+    },
+  });
+
+  await router.push('/counter');
+  await router.isReady();
+
+  expect(wrapper.html()).toContain('Home');
+
+  expect(router.currentRoute.value.path).toBe('/counter');
+  await wrapper.get('a#home').trigger('click');
+  await flushPromises();
+  expect(router.currentRoute.value.path).toBe('/');
 });
