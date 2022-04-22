@@ -21,7 +21,7 @@ const routes = [
   {
     path: '/cats',
     name: 'Cats',
-    component: () => import('../pages/Suspense.vue'),
+    component: () => import('../pages/Cats.vue'),
   },
 ];
 

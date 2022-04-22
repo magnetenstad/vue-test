@@ -1,5 +1,5 @@
 import { flushPromises, mount } from '@vue/test-utils';
-import Suspense from './Suspense.vue';
+import Cats from './Cats.vue';
 import axios from 'axios';
 
 test('counter counts', async () => {
@@ -9,7 +9,7 @@ test('counter counts', async () => {
   vi.spyOn(axios, 'get').mockResolvedValueOnce({
     data: [{ url: 'https://cdn2.thecatapi.com/images/73q.jpg' }],
   });
-  const wrapper = mount(Suspense, {});
+  const wrapper = mount(Cats, {});
   await flushPromises();
 
   expect(wrapper.get('h1').text()).toContain('Random cats');
