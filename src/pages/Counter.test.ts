@@ -19,7 +19,7 @@ test('routes home', async () => {
   const wrapper = mount(Counter, {
     global: {
       stubs: {
-        RouterLink: RouterLinkStub,
+        'router-link': RouterLinkStub,
       },
     },
   });
