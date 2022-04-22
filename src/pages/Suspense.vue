@@ -7,6 +7,7 @@ onMounted(() => {
 });
 
 const getCat = async () => {
+  imgSrc.value = '';
   axios.get('https://api.thecatapi.com/v1/images/search').then((result) => {
     imgSrc.value = result.data[0].url;
   });
@@ -15,7 +16,8 @@ const getCat = async () => {
 
 <template>
   <h1>Random cats!</h1>
-  <img :src="imgSrc" alt="A pet!" />
+  <img v-if="imgSrc.length" :src="imgSrc" alt="A pet!" />
+  <div v-else>Loading Cat...</div>
   <p id="url">{{ imgSrc }}</p>
   <br />
   <br />
