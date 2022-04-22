@@ -18,6 +18,11 @@ const routes = [
     name: 'Counter',
     component: () => import('../pages/Counter.vue'),
   },
+  {
+    path: '/cats',
+    name: 'Cats',
+    component: () => import('../pages/Suspense.vue'),
+  },
 ];
 
 const createRouter = (): Router =>
